@@ -9,15 +9,14 @@ const MyBids = () => {
   const axiosSecure = useAxiosSecure();
 
   useEffect(() => {
-    axiosSecure.get(`/bids?email=${user.email}`)
-    .then((data) => {
+    axiosSecure.get(`/bids?email=${user.email}`).then((data) => {
       setBids(data.data);
     });
   }, [user, axiosSecure]);
 
   // useEffect(() => {
   //     if (user?.email) {
-  //         fetch(`http://localhost:3000/bids?email=${user.email}`)
+  //         fetch(`https://smart-deal-server-theta.vercel.app/bids?email=${user.email}`)
   //             .then(res => res.json())
   //             .then(data => {
   //                 console.log(data);
@@ -37,7 +36,7 @@ const MyBids = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:3000/bids/${_id}`, {
+        fetch(`https://smart-deal-server-theta.vercel.app/bids/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

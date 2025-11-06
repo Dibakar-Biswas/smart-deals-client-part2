@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 
 const instance = axios.create({
-  baseURL: "http://localhost:3000",
+  baseURL: "https://smart-deal-server-theta.vercel.app",
 });
 
 const useAxiosSecure = () => {
@@ -15,7 +15,7 @@ const useAxiosSecure = () => {
     // request interceptor
     const requestInterceptor = instance.interceptors.request.use((config) => {
       const token = user.accessToken;
-      if(token){
+      if (token) {
         config.headers.authorization = `Bearer ${token}`;
       }
       return config;

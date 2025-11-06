@@ -5,8 +5,8 @@ import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const CreateAProduct = () => {
   const { user } = useAuth();
-//   const axiosInstance = useAxios();
-    const axiosSecure = useAxiosSecure()
+  //   const axiosInstance = useAxios();
+  const axiosSecure = useAxiosSecure();
   const handleCreateAProduct = (e) => {
     e.preventDefault();
     const title = e.target.title.value;
@@ -24,7 +24,7 @@ const CreateAProduct = () => {
       seller_name: user.displayName,
     };
 
-    // axios.post("http://localhost:3000/products", newProduct).then((data) => {
+    // axios.post("https://smart-deal-server-theta.vercel.app/products", newProduct).then((data) => {
     //   console.log(data.data);
     //   if (data.data) {
     //     Swal.fire({
@@ -37,10 +37,9 @@ const CreateAProduct = () => {
     //   }
     // });
 
-    axiosSecure.post('/products', newProduct)
-    .then(data => {
-        console.log('after secure call', data.data)
-    })
+    axiosSecure.post("/products", newProduct).then((data) => {
+      console.log("after secure call", data.data);
+    });
   };
 
   return (
